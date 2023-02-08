@@ -107,6 +107,18 @@ AND LOWER(title) NOT LIKE LOWER('%Analytics%');
 
 -- **BONUS:**
 -- You want to understand which jobs requiring SQL are hard to fill. Find the number of jobs by industry (domain) that require SQL and have been posted longer than 3 weeks. 
---  - Disregard any postings where the domain is NULL. 
---  - Order your results so that the domain with the greatest number of `hard to fill` jobs is at the top. 
---   - Which three industries are in the top 4 on this list? How many jobs have been listed for more than 3 weeks for each of the top 4?
+-- Disregard any postings where the domain is NULL. 
+-- Order your results so that the domain with the greatest number of `hard to fill` jobs is at the top. 
+-- Which three industries are in the top 4 on this list? How many jobs have been listed for more than 3 weeks for each of the top 4?
+
+SELECT domain, COUNT(title) AS hard_to_fill
+FROM data_analyst_jobs
+WHERE domain IS NOT NULL
+AND skill LIKE '%SQL%'
+AND days_since_posting > 21
+GROUP BY domain
+ORDER BY hard_to_fill DESC;
+
+--Internet & Software (62 jobs), Banks & Financial Services (61 jobs), Consulting and Business Services (57 jobs), Health Care (52 jobs)
+
+
