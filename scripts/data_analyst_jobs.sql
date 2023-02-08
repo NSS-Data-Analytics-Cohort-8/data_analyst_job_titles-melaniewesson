@@ -21,7 +21,7 @@ LIMIT 10;
 
 SELECT COUNT(*)
 FROM data_analyst_jobs
-WHERE location = 'TN'
+WHERE location = 'TN';
 
 -- 21 postings
 
@@ -92,9 +92,9 @@ ORDER BY avg_rating DESC;
 
 SELECT COUNT(title)
 FROM data_analyst_jobs
-WHERE title LIKE '%Analyst%';
+WHERE LOWER(title) LIKE LOWER('%Analyst%');
 
--- 1636 job titles
+-- 1669 job titles
 
 -- 12.	How many different job titles do not contain either the word ‘Analyst’ or the word ‘Analytics’? What word do these positions have in common?
 
